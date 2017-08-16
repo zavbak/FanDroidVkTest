@@ -31,6 +31,7 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
 
       myFragmentManager = new MyFragmentManager();
 
+
       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
       setSupportActionBar(toolbar);
 
