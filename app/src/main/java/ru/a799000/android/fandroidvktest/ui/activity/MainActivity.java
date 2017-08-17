@@ -34,6 +34,8 @@ public class MainActivity extends BaseActivity implements MainView {
 
         mPresenter.checkAuth();
 
+
+
         //VKSdk.login(this, ApiConstants.DEFAULT_LOGIN_SCOPE);
 
         //String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
