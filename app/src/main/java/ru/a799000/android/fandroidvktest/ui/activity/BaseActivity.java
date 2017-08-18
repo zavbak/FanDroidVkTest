@@ -11,6 +11,9 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 
 
+import javax.inject.Inject;
+
+import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.common.manager.MyFragmentManager;
 import ru.a799000.android.fandroidvktest.ui.fragment.BaseFragment;
@@ -21,15 +24,16 @@ import ru.a799000.android.fandroidvktest.ui.fragment.BaseFragment;
 
 public abstract class BaseActivity extends MvpAppCompatActivity {
 
+   @Inject
    MyFragmentManager myFragmentManager;
 
    @Override
    public void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
 
-      setContentView(R.layout.activity_base);
+      MyApplication.getApplicationComponent().inject(this);
 
-      myFragmentManager = new MyFragmentManager();
+      setContentView(R.layout.activity_base);
 
 
       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

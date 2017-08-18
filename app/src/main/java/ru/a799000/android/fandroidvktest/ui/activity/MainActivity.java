@@ -17,6 +17,7 @@ import com.vk.sdk.util.VKUtil;
 import java.util.Arrays;
 
 import ru.a799000.android.fandroidvktest.CurrentUser;
+import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.consts.ApiConstants;
 import ru.a799000.android.fandroidvktest.mvp.presenter.MainPresenter;
@@ -31,6 +32,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        MyApplication.getApplicationComponent().inject(this);
 
         mPresenter.checkAuth();
 
