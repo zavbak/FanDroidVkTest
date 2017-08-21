@@ -18,6 +18,7 @@ import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.rest.api.WallApi;
 import ru.a799000.android.fandroidvktest.rest.model.response.BaseItemResponse;
 import ru.a799000.android.fandroidvktest.rest.model.response.Full;
+import ru.a799000.android.fandroidvktest.rest.model.response.WallGetResponse;
 
 
 public class NewsFeedFragment extends BaseFragment {
@@ -39,14 +40,14 @@ public class NewsFeedFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mWallApi.get("-86529522", CurrentUser.getAccessToken(), 1, "5.67").enqueue(new Callback<Full<BaseItemResponse>>() {
+        mWallApi.get("-86529522", CurrentUser.getAccessToken(), 1, "5.67").enqueue(new Callback<WallGetResponse>() {
             @Override
-            public void onResponse(Call<Full<BaseItemResponse>> call, Response<Full<BaseItemResponse>> response) {
-                Toast.makeText(getActivity(), "Count: " + response.body().response.getCount(), Toast.LENGTH_LONG).show();
+            public void onResponse(Call<WallGetResponse> call, Response<WallGetResponse> response) {
+                Toast.makeText(getActivity(), "Likes: " + response.body().response.get, Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<Full<BaseItemResponse>> call, Throwable t) {
+            public void onFailure(Call<WallGetResponse> call, Throwable t) {
                 t.printStackTrace();
             }
         });
