@@ -16,6 +16,7 @@ import ru.a799000.android.fandroidvktest.CurrentUser;
 import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.rest.api.WallApi;
+import ru.a799000.android.fandroidvktest.rest.model.request.WallGetRequestModel;
 import ru.a799000.android.fandroidvktest.rest.model.response.BaseItemResponse;
 import ru.a799000.android.fandroidvktest.rest.model.response.Full;
 import ru.a799000.android.fandroidvktest.rest.model.response.WallGetResponse;
@@ -40,10 +41,10 @@ public class NewsFeedFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mWallApi.get("-86529522", CurrentUser.getAccessToken(), 1, "5.67").enqueue(new Callback<WallGetResponse>() {
+        mWallApi.get(new WallGetRequestModel(-86529522).toMap()).enqueue(new Callback<WallGetResponse>() {
             @Override
             public void onResponse(Call<WallGetResponse> call, Response<WallGetResponse> response) {
-                Toast.makeText(getActivity(), "Likes: " + response.body().response.get, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Likes: " + response.body().response.getItems().get(0).getLikes().getCount(), Toast.LENGTH_LONG).show();
             }
 
             @Override

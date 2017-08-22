@@ -1,7 +1,6 @@
 
 package ru.a799000.android.fandroidvktest.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -34,12 +33,7 @@ public class WallItem {
     private Integer canPin;
     @SerializedName("attachments")
     @Expose
-    private List<Attachment> attachments = new ArrayList<>();
-
-    @SerializedName("copy_history")
-    @Expose
-    private List<WallItem> copyHistory = new ArrayList<>();
-
+    private List<Attachment> attachments = null;
     @SerializedName("post_source")
     @Expose
     private PostSource postSource;
