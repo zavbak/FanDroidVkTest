@@ -6,18 +6,26 @@ import ru.a799000.android.fandroidvktest.model.WallItem;
 import ru.a799000.android.fandroidvktest.ui.holder.NewsItemBodyHolder;
 
 
-/**
- * Created by user on 15.08.2017.
- */
-
 public class NewsItemBodyViewModel extends BaseViewModel {
     private int mId;
 
     private String mText;
 
+    private String mAttachmentString;
+
+    private boolean mIsRepost;
+
     public NewsItemBodyViewModel(WallItem wallItem) {
         this.mId = wallItem.getId();
-        this.mText = wallItem.getText();
+        this.mIsRepost = wallItem.haveSharedRepost();
+
+        if (mIsRepost) {
+            this.mText = wallItem.getSharedRepost().getText();
+            this.mAttachmentString = wallItem.getSharedRepost().getAttachmentsString();
+        } else {
+            this.mText = wallItem.getText();
+            this.mAttachmentString = wallItem.getAttachmentsString();
+        }
     }
 
 
@@ -38,5 +46,9 @@ public class NewsItemBodyViewModel extends BaseViewModel {
 
     public int getId() {
         return mId;
+    }
+
+    public String getmAttachmentString() {
+        return mAttachmentString;
     }
 }

@@ -9,6 +9,8 @@ import ru.a799000.android.fandroidvktest.di.module.RestModule;
 import ru.a799000.android.fandroidvktest.ui.activity.BaseActivity;
 import ru.a799000.android.fandroidvktest.ui.activity.MainActivity;
 import ru.a799000.android.fandroidvktest.ui.fragment.NewsFeedFragment;
+import ru.a799000.android.fandroidvktest.ui.holder.NewsItemBodyHolder;
+import ru.a799000.android.fandroidvktest.ui.holder.NewsItemFooterHolder;
 
 /**
  * Created by Alex on 18.08.2017.
@@ -25,4 +27,7 @@ public interface ApplicationComponent {
     //fragments
     void inject(NewsFeedFragment fragment);
 
+    //holders
+    void inject(NewsItemBodyHolder holder);
+    void inject(NewsItemFooterHolder holder);
 }
