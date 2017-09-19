@@ -6,9 +6,6 @@ package ru.a799000.android.fandroidvktest.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,7 +18,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
-import ru.a799000.android.fandroidvktest.common.BaseAdapter;
 import ru.a799000.android.fandroidvktest.common.utils.VkListHelper;
 import ru.a799000.android.fandroidvktest.model.WallItem;
 import ru.a799000.android.fandroidvktest.model.view.BaseViewModel;
@@ -60,7 +56,7 @@ public class NewsFeedFragment extends BaseFeedFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mWallApi.get(new WallGetRequestModel(-125227382).toMap()).enqueue(new Callback<GetWallResponse>() {
+        mWallApi.get(new WallGetRequestModel(-73476).toMap()).enqueue(new Callback<GetWallResponse>() {
             @Override
             public void onResponse(Call<GetWallResponse> call, Response<GetWallResponse> response) {
                 List<WallItem> wallItems = VkListHelper.getWallList(response.body().response);
