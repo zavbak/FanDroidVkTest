@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.vk.sdk.VKSdk;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import ru.a799000.android.fandroidvktest.di.component.ApplicationComponent;
 import ru.a799000.android.fandroidvktest.di.component.DaggerApplicationComponent;
 import ru.a799000.android.fandroidvktest.di.module.ApplicationModule;
@@ -23,6 +25,15 @@ public class MyApplication extends Application{
         initComponent();
 
         VKSdk.initialize(this);
+
+
+        Realm.init(this);
+        RealmConfiguration realmConfiguration = new RealmConfiguration
+                .Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+        Realm.setDefaultConfiguration(realmConfiguration);
+
     }
 
     private void initComponent(){

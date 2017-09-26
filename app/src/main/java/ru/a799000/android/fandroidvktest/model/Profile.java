@@ -3,11 +3,13 @@ package ru.a799000.android.fandroidvktest.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Alex on 15.09.2017.
  */
 
-public class Profile implements Owner{
+public class Profile extends RealmObject implements Owner{
     @SerializedName("id")
     @Expose
     private int id;

@@ -7,17 +7,21 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 import ru.a799000.android.fandroidvktest.model.attachment.ApiAttachment;
 
-public class WallItem {
+public class WallItem extends RealmObject {
 
-    private String attachmentsString;
-    private String senderName;
-    private String senderPhoto;
+    public String senderName;
+    public String senderPhoto;
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("from_id")
     @Expose
     private Integer fromId;
@@ -41,11 +45,11 @@ public class WallItem {
     private Integer canPin;
     @SerializedName("attachments")
     @Expose
-    private List<ApiAttachment> attachments = new ArrayList<>();
+    private RealmList<ApiAttachment> apiAttachments = new RealmList<>();
 
     @SerializedName("copy_history")
     @Expose
-    private List<WallItem> copyHistory = new ArrayList<>();
+    private RealmList<WallItem> copyHistory = new RealmList<>();
 
     @SerializedName("post_source")
     @Expose
@@ -71,6 +75,21 @@ public class WallItem {
         this.attachmentsString = attachmentsString;
     }
 
+    public String attachmentsString;
+
+
+    public boolean haveSharedRepost() {
+        return copyHistory.size() > 0;
+    }
+
+    public WallItem getSharedRepost() {
+        if (haveSharedRepost()) {
+            return copyHistory.get(0);
+        }
+
+        return null;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -79,7 +98,7 @@ public class WallItem {
         this.id = id;
     }
 
-    public Integer getFromId() {
+    public int getFromId() {
         return fromId;
     }
 
@@ -135,12 +154,12 @@ public class WallItem {
         this.canPin = canPin;
     }
 
-    public List<ApiAttachment> getAttachments() {
-        return attachments;
+    public RealmList<ApiAttachment> getApiAttachments() {
+        return apiAttachments;
     }
 
-    public void setAttachments(List<ApiAttachment> attachments) {
-        this.attachments = attachments;
+    public void setApiAttachments(RealmList<ApiAttachment> apiAttachments) {
+        this.apiAttachments = apiAttachments;
     }
 
     public PostSource getPostSource() {
@@ -187,27 +206,15 @@ public class WallItem {
         return senderName;
     }
 
-    public String getSenderPhoto() {
-        return senderPhoto;
-    }
-
     public void setSenderName(String senderName) {
         this.senderName = senderName;
+    }
+
+    public String getSenderPhoto() {
+        return senderPhoto;
     }
 
     public void setSenderPhoto(String senderPhoto) {
         this.senderPhoto = senderPhoto;
     }
-
-    public boolean haveSharedRepost() {
-        return copyHistory.size() > 0;
-    }
-
-    public WallItem getSharedRepost() {
-        if (haveSharedRepost()) {
-            return copyHistory.get(0);
-        }
-        return null;
-    }
-
 }

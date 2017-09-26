@@ -11,7 +11,7 @@ import ru.a799000.android.fandroidvktest.model.Group;
 import ru.a799000.android.fandroidvktest.model.Owner;
 import ru.a799000.android.fandroidvktest.model.Profile;
 
-public class ItemWithSendersResponse<T> extends BaseItemResponse<T> {
+public class ItemsWithSendersResponse<T> extends BaseItemResponse<T> {
     private List<Profile> profiles = new ArrayList<>();
     private List<Group> groups = new ArrayList<>();
 
