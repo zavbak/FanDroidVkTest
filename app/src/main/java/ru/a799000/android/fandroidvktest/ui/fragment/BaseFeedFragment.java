@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.common.BaseAdapter;
 import ru.a799000.android.fandroidvktest.common.manager.MyLinearLayoutManager;
@@ -23,6 +25,7 @@ import ru.a799000.android.fandroidvktest.mvp.view.BaseFeedView;
 
 public abstract class BaseFeedFragment extends BaseFragment implements BaseFeedView{
 
+    @BindView(R.id.rv_list)
     RecyclerView mRecyclerView;
 
     BaseAdapter mAdapter;
@@ -30,12 +33,15 @@ public abstract class BaseFeedFragment extends BaseFragment implements BaseFeedV
     protected BaseFeedPresenter mBaseFeedPresenter;
 
 
+    @BindView(R.id.swipe_refresh)
     protected SwipeRefreshLayout mSwipeRefreshLayout;
     protected ProgressBar mProgressBar;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ButterKnife.bind(this, view);
 
         setUpRecyclerView(view);
         setUpAdapter(mRecyclerView);
@@ -54,7 +60,7 @@ public abstract class BaseFeedFragment extends BaseFragment implements BaseFeedV
 
 
     private void setUpRecyclerView(View rootView) {
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rv_list);
+
 
         MyLinearLayoutManager mLinearLayoutManager = new MyLinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
@@ -78,7 +84,7 @@ public abstract class BaseFeedFragment extends BaseFragment implements BaseFeedV
     }
 
     private void setUpSwipeToRefreshLayout(View rootView) {
-        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
+
         mSwipeRefreshLayout.setOnRefreshListener(() -> onCreateFeedPresenter().loadRefresh());
 
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);

@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.model.view.NewsItemBodyViewModel;
@@ -17,9 +19,13 @@ import ru.a799000.android.fandroidvktest.model.view.NewsItemBodyViewModel;
 
 public class NewsItemBodyHolder extends BaseViewHolder<NewsItemBodyViewModel> {
 
-    private TextView tvText;
 
-    private TextView tvAttachments;
+
+    @BindView(R.id.tv_text)
+    public TextView tvText;
+
+    @BindView(R.id.tv_attachments)
+    public TextView tvAttachments;
 
     @Inject
     protected Typeface mFontGoogle;
@@ -27,10 +33,8 @@ public class NewsItemBodyHolder extends BaseViewHolder<NewsItemBodyViewModel> {
 
     public NewsItemBodyHolder(View itemView) {
         super(itemView);
+        ButterKnife.bind(this, itemView);
         MyApplication.getApplicationComponent().inject(this);
-
-        tvText = (TextView) itemView.findViewById(R.id.tv_text);
-        tvAttachments = (TextView) itemView.findViewById(R.id.tv_attachments);
 
         if (tvAttachments != null) {
             tvAttachments.setTypeface(mFontGoogle);

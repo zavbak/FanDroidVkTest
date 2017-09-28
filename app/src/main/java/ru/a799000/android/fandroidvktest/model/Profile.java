@@ -4,14 +4,17 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Alex on 15.09.2017.
  */
 
 public class Profile extends RealmObject implements Owner{
+
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     private int id;
 
     @SerializedName("photo_50")

@@ -14,6 +14,8 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.a799000.android.fandroidvktest.MyApplication;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.common.manager.MyFragmentManager;
@@ -28,20 +30,20 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
    @Inject
    MyFragmentManager myFragmentManager;
 
+   @BindView(R.id.toolbar)
+   Toolbar toolbar;
+
+   @BindView(R.id.progress)
    protected ProgressBar mProgressBar;
 
    @Override
-   public void onCreate(@Nullable Bundle savedInstanceState) {
+   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_base);
+      ButterKnife.bind(this);
 
       MyApplication.getApplicationComponent().inject(this);
 
-      setContentView(R.layout.activity_base);
-
-      mProgressBar = (ProgressBar) findViewById(R.id.progress);
-
-
-      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
       setSupportActionBar(toolbar);
 
       FrameLayout parent = (FrameLayout) findViewById(R.id.main_wrapper);
@@ -52,15 +54,18 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
    @LayoutRes
    protected abstract int getMainContentLayout();
 
-   public void fragmentOnScreen(BaseFragment baseFragment){
+
+   public void fragmentOnScreen(BaseFragment baseFragment) {
       setToolbarTitle(baseFragment.createToolbarTitle(this));
    }
+
 
    private void setToolbarTitle(String title) {
       if (getSupportActionBar() != null) {
          getSupportActionBar().setTitle(title);
       }
    }
+
 
    public void setContent(BaseFragment fragment) {
       myFragmentManager.setFragment(this, fragment, R.id.main_wrapper);
@@ -78,14 +83,13 @@ public abstract class BaseActivity extends MvpAppCompatActivity {
       return myFragmentManager.removeFragment(this, fragment);
    }
 
+   public ProgressBar getProgressBar() {
+      return mProgressBar;
+   }
 
    @Override
    public void onBackPressed() {
       removeCurrentFragment();
-   }
-
-   public ProgressBar getProgressBar() {
-      return mProgressBar;
    }
 
 }
