@@ -21,6 +21,7 @@ import ru.a799000.android.fandroidvktest.mvp.view.MainView;
 import ru.a799000.android.fandroidvktest.rest.api.UsersApi;
 import ru.a799000.android.fandroidvktest.rest.model.request.UsersGetRequestModel;
 import ru.a799000.android.fandroidvktest.ui.fragment.BaseFragment;
+import ru.a799000.android.fandroidvktest.ui.fragment.BoardFragment;
 import ru.a799000.android.fandroidvktest.ui.fragment.MembersFragment;
 import ru.a799000.android.fandroidvktest.ui.fragment.MyPostsFragment;
 import ru.a799000.android.fandroidvktest.ui.fragment.NewsFeedFragment;
@@ -111,6 +112,9 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 break;
             case 4:
                 fragment = new MembersFragment();
+                break;
+            case 5:
+                fragment = new BoardFragment();
                 break;
         }
 

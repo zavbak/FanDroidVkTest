@@ -7,6 +7,7 @@ import ru.a799000.android.fandroidvktest.common.manager.NetworkManager;
 import ru.a799000.android.fandroidvktest.di.module.ApplicationModule;
 import ru.a799000.android.fandroidvktest.di.module.ManagerModule;
 import ru.a799000.android.fandroidvktest.di.module.RestModule;
+import ru.a799000.android.fandroidvktest.mvp.presenter.BoardPresenter;
 import ru.a799000.android.fandroidvktest.mvp.presenter.MainPresenter;
 import ru.a799000.android.fandroidvktest.mvp.presenter.MembersPresenter;
 import ru.a799000.android.fandroidvktest.mvp.presenter.NewsFeedPresenter;
@@ -39,6 +40,7 @@ public interface ApplicationComponent {
     void inject(NewsFeedPresenter presenter);
     void inject(MainPresenter presenter);
     void inject(MembersPresenter presenter);
+    void inject(BoardPresenter presenter);
 
     //managers
     void inject(NetworkManager manager);
