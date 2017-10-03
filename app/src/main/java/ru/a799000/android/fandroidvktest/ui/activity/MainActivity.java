@@ -35,6 +35,7 @@ import ru.a799000.android.fandroidvktest.consts.ApiConstants;
 import ru.a799000.android.fandroidvktest.model.Profile;
 import ru.a799000.android.fandroidvktest.mvp.presenter.MainPresenter;
 import ru.a799000.android.fandroidvktest.mvp.view.MainView;
+import ru.a799000.android.fandroidvktest.ui.fragment.BaseFragment;
 import ru.a799000.android.fandroidvktest.ui.fragment.NewsFeedFragment;
 
 public class MainActivity extends BaseActivity implements MainView {
@@ -100,6 +101,10 @@ public class MainActivity extends BaseActivity implements MainView {
                 .addDrawerItems(item1, item2, item3,
                         new SectionDrawerItem().withName("Группа"),
                         item4, item5, item6, item7)
+                .withOnDrawerItemClickListener((view, position, drawerItem) -> {
+                    mPresenter.drawerItemClick((int) drawerItem.getIdentifier());
+                    return false;
+                })
                 .build();
     }
 
@@ -161,4 +166,13 @@ public class MainActivity extends BaseActivity implements MainView {
                 }));
         mAccountHeader.setProfiles(profileDrawerItems);
     }
+
+    @Override
+    public void showFragmentFromDrawer(BaseFragment baseFragment) {
+        setContent(baseFragment);
+    }
+
+
+
+
 }

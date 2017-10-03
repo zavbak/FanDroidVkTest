@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ru.a799000.android.fandroidvktest.rest.RestClient;
+import ru.a799000.android.fandroidvktest.rest.api.GroupsApi;
 import ru.a799000.android.fandroidvktest.rest.api.UsersApi;
 import ru.a799000.android.fandroidvktest.rest.api.WallApi;
 
@@ -36,5 +37,11 @@ public class RestModule {
     @Singleton
     public UsersApi provideUsersApi() {
         return mRestClient.createService(UsersApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public GroupsApi provideGroupsApi() {
+        return mRestClient.createService(GroupsApi.class);
     }
 }

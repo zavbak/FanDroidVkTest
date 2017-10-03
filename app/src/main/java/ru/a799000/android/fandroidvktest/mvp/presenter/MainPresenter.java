@@ -14,11 +14,16 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 import ru.a799000.android.fandroidvktest.CurrentUser;
 import ru.a799000.android.fandroidvktest.MyApplication;
+import ru.a799000.android.fandroidvktest.common.manager.MyFragmentManager;
 import ru.a799000.android.fandroidvktest.common.manager.NetworkManager;
 import ru.a799000.android.fandroidvktest.model.Profile;
 import ru.a799000.android.fandroidvktest.mvp.view.MainView;
 import ru.a799000.android.fandroidvktest.rest.api.UsersApi;
 import ru.a799000.android.fandroidvktest.rest.model.request.UsersGetRequestModel;
+import ru.a799000.android.fandroidvktest.ui.fragment.BaseFragment;
+import ru.a799000.android.fandroidvktest.ui.fragment.MembersFragment;
+import ru.a799000.android.fandroidvktest.ui.fragment.MyPostsFragment;
+import ru.a799000.android.fandroidvktest.ui.fragment.NewsFeedFragment;
 
 /**
  * Created by Alex on 16.08.2017.
@@ -32,6 +37,9 @@ public class MainPresenter extends MvpPresenter<MainView> {
 
     @Inject
     NetworkManager mNetworkManager;
+
+    @Inject
+    MyFragmentManager myFragmentManager;
 
     public MainPresenter() {
         MyApplication.getApplicationComponent().inject(this);
@@ -89,6 +97,26 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 }, error -> {
                     error.printStackTrace();
                 });
+    }
+
+    public void drawerItemClick(int id) {
+        BaseFragment fragment = null;
+
+        switch (id) {
+            case 1:
+                fragment = new NewsFeedFragment();
+                break;
+            case 2:
+                fragment = new MyPostsFragment();
+                break;
+            case 4:
+                fragment = new MembersFragment();
+                break;
+        }
+
+        if (fragment != null && !myFragmentManager.isAlreadyContains(fragment)) {
+            getViewState().showFragmentFromDrawer(fragment);
+        }
     }
 
 }
