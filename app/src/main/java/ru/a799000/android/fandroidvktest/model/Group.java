@@ -1,13 +1,18 @@
 
 package ru.a799000.android.fandroidvktest.model;
 
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import ru.a799000.android.fandroidvktest.model.attachment.Link;
 
 public class Group extends RealmObject implements Owner{
 
+    @PrimaryKey
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -38,6 +43,27 @@ public class Group extends RealmObject implements Owner{
     @SerializedName("photo_200")
     @Expose
     private String photo200;
+
+    @SerializedName("status")
+    @Expose
+    public String status;
+
+    @SerializedName("description")
+    @Expose
+    public String description;
+
+    @SerializedName("site")
+    @Expose
+    public String site;
+
+    @SerializedName("links")
+    RealmList<Link> links;
+
+    @SerializedName("contacts")
+    RealmList<Contact> contactList;
+
+
+
 
     public int getId() {
         return id;
@@ -129,4 +155,43 @@ public class Group extends RealmObject implements Owner{
         return photo100;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public RealmList<Link> getLinks() {
+        return links;
+    }
+
+    public RealmList<Contact> getContactList() {
+        return contactList;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public void setLinks(RealmList<Link> links) {
+        this.links = links;
+    }
+
+    public void setContactList(RealmList<Contact> contactList) {
+        this.contactList = contactList;
+    }
 }
