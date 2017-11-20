@@ -8,6 +8,7 @@ import ru.a799000.android.fandroidvktest.rest.RestClient;
 import ru.a799000.android.fandroidvktest.rest.api.BoardApi;
 import ru.a799000.android.fandroidvktest.rest.api.GroupsApi;
 import ru.a799000.android.fandroidvktest.rest.api.UsersApi;
+import ru.a799000.android.fandroidvktest.rest.api.VideoApi;
 import ru.a799000.android.fandroidvktest.rest.api.WallApi;
 
 /**
@@ -20,6 +21,12 @@ public class RestModule {
 
     public RestModule() {
         mRestClient = new RestClient();
+    }
+
+    @Singleton
+    @Provides
+    public VideoApi provideVideoApi(){
+        return mRestClient.createService(VideoApi.class);
     }
 
     @Singleton
