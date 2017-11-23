@@ -15,8 +15,10 @@ import ru.a799000.android.fandroidvktest.mvp.presenter.NewsFeedPresenter;
 import ru.a799000.android.fandroidvktest.ui.activity.BaseActivity;
 import ru.a799000.android.fandroidvktest.ui.activity.MainActivity;
 import ru.a799000.android.fandroidvktest.ui.fragment.NewsFeedFragment;
-import ru.a799000.android.fandroidvktest.ui.holder.NewsItemBodyHolder;
-import ru.a799000.android.fandroidvktest.ui.holder.NewsItemFooterHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.NewsItemBodyHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.NewsItemFooterHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.attachment.ImageAttachmentHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.attachment.VideoAttachmentHolder;
 
 /**
  * Created by Alex on 18.08.2017.
@@ -36,6 +38,8 @@ public interface ApplicationComponent {
     //holders
     void inject(NewsItemBodyHolder holder);
     void inject(NewsItemFooterHolder holder);
+    void inject(ImageAttachmentHolder holder);
+    void inject(VideoAttachmentHolder holder);
 
     //presenters
     void inject(NewsFeedPresenter presenter);
@@ -46,4 +50,7 @@ public interface ApplicationComponent {
 
     //managers
     void inject(NetworkManager manager);
+
+
+
 }

@@ -3,7 +3,7 @@ package ru.a799000.android.fandroidvktest.model.view;
 import android.view.View;
 
 import ru.a799000.android.fandroidvktest.model.WallItem;
-import ru.a799000.android.fandroidvktest.ui.holder.NewsItemBodyHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.NewsItemBodyHolder;
 
 
 public class NewsItemBodyViewModel extends BaseViewModel {

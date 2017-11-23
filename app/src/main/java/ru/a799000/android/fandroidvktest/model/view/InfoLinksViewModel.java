@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.a799000.android.fandroidvktest.R;
-import ru.a799000.android.fandroidvktest.ui.holder.BaseViewHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.BaseViewHolder;
 
 public class InfoLinksViewModel extends BaseViewModel{
 

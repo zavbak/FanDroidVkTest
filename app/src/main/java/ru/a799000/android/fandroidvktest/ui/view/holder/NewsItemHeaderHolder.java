@@ -1,4 +1,4 @@
-package ru.a799000.android.fandroidvktest.ui.holder;
+package ru.a799000.android.fandroidvktest.ui.view.holder;
 
 
 import android.content.Context;

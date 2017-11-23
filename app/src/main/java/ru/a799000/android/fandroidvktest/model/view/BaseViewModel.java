@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ru.a799000.android.fandroidvktest.R;
-import ru.a799000.android.fandroidvktest.ui.holder.BaseViewHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.BaseViewHolder;
 
 
 /**

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.a799000.android.fandroidvktest.model.view.BaseViewModel;
-import ru.a799000.android.fandroidvktest.ui.holder.BaseViewHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.BaseViewHolder;
 
 /**
  * Created by user on 15.08.2017.

@@ -4,8 +4,8 @@ package ru.a799000.android.fandroidvktest.model.view;
 import android.view.View;
 
 import ru.a799000.android.fandroidvktest.model.WallItem;
-import ru.a799000.android.fandroidvktest.ui.holder.BaseViewHolder;
-import ru.a799000.android.fandroidvktest.ui.holder.NewsItemHeaderHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.BaseViewHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.NewsItemHeaderHolder;
 
 
 public class NewsItemHeaderViewModel extends BaseViewModel{

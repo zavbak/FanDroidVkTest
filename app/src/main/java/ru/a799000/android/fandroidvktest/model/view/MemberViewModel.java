@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import ru.a799000.android.fandroidvktest.R;
 import ru.a799000.android.fandroidvktest.model.Member;
-import ru.a799000.android.fandroidvktest.ui.holder.BaseViewHolder;
+import ru.a799000.android.fandroidvktest.ui.view.holder.BaseViewHolder;
 
 public class MemberViewModel extends BaseViewModel{
 
